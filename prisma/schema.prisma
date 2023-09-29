@@ -23,12 +23,21 @@ model User {
 }
 
 model Study {
-  id          String @id @default(uuid())
+  id          String    @id @default(uuid())
   title       String
   description String
-  file       String
+  file        String
+  created_at  DateTime? @default(now())
+  update_at   DateTime? @default(now())
+
+  @@map("studies")
+}
+
+model Banner {
+  id         String    @id @default(uuid())
+  banner     String
   created_at DateTime? @default(now())
   update_at  DateTime? @default(now())
 
-  @@map("studies")
+  @@map("banners")
 }

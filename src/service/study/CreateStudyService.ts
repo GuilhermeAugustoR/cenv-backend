@@ -14,6 +14,12 @@ class CreateStudyService {
         description: description,
         file: file,
       },
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        file: true,
+      },
     });
 
     return study;

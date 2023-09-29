@@ -6,10 +6,12 @@ import { Authenticated } from "./middlewares/Authenticated";
 import multer from "multer";
 import uploadConfig from "./config/multer";
 import { CreateStudyController } from "./controller/study/CreateStudyController";
+import { CreateBannerController } from "./controller/banner/CreateBannerController";
 
 const router = Router();
 
 const upload = multer(uploadConfig.upload("./tmp"));
+const uploadBanner = multer(uploadConfig.upload("./tmp/Banner"));
 
 router.post("/createUser", new CreateUserController().handle);
 router.post("/login", new LoginController().handle);
@@ -20,6 +22,12 @@ router.post(
   Authenticated,
   upload.single("file"),
   new CreateStudyController().handle
+);
+router.post(
+  "/createBanner",
+  Authenticated,
+  uploadBanner.single("file"),
+  new CreateBannerController().handle
 );
 
 export { router };
