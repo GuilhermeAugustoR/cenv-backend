@@ -26,7 +26,7 @@ model Study {
   id          String @id @default(uuid())
   title       String
   description String
-  image       String
+  file       String
   created_at DateTime? @default(now())
   update_at  DateTime? @default(now())
 

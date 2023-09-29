@@ -12,12 +12,12 @@ class CreateStudyController {
     if (!req.file) {
       throw new Error("Erro ao enviar um arquivo");
     } else {
-      const { originalname, filename: image } = req.file;
+      const { originalname, filename: file } = req.file;
 
       const study = await createStudyService.execute({
         title,
         description,
-        image,
+        file,
       });
 
     //   const JSONDelete = (filePath: string) => {
