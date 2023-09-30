@@ -7,6 +7,7 @@ import multer from "multer";
 import uploadConfig from "./config/multer";
 import { CreateStudyController } from "./controller/study/CreateStudyController";
 import { CreateBannerController } from "./controller/banner/CreateBannerController";
+import { ListStudyController } from "./controller/study/ListStudyController";
 
 const router = Router();
 
@@ -29,5 +30,6 @@ router.post(
   uploadBanner.single("file"),
   new CreateBannerController().handle
 );
+router.get("/listStudy", Authenticated, new ListStudyController().handle);
 
 export { router };
